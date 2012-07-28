@@ -1,17 +1,17 @@
-/*
- * Vector Class
+/**
+ * Vector2d Class
  * 
  * Heavily based on/borrowed from a kind soul at pastbin.com
  * http://pastebin.com/h5PSDR0g
  *
  * Thank you!
  */
-Vector = function Vector(x, y) {
+Vector2d = function Vector2d(x, y) {
 	this.x = x;
 	this.y = y;
    
 	/**
-	 * Set or calculate the length of the Vector.
+	 * Set or calculate the length of the Vector2d.
 	 * @param newLen Number
 	 * @return Number
 	 */
@@ -28,9 +28,9 @@ Vector = function Vector(x, y) {
 	}
 	
 	/**
-	 * Ensure that this Vector's length is no larger than the given value.
+	 * Ensure that this Vector2d's length is no larger than the given value.
 	 * @param maxLen Number
-	 * @return Vector
+	 * @return Vector2d
 	 */
 	this.trunc = function Truncate(maxLen) {
 		if (this.len() > maxLen) {
@@ -40,10 +40,10 @@ Vector = function Vector(x, y) {
 	}
 	
 	/**
-	 * Ensure that this Vector's length is no larger than the given maximum and
+	 * Ensure that this Vector2d's length is no larger than the given maximum and
 	 * no smaller than the given minimum.
 	 * @param 
-	 * @return Vector
+	 * @return Vector2d
 	 */
 	this.clamp = function Clamp(min, max) {
 		var l = this.len();
@@ -52,9 +52,9 @@ Vector = function Vector(x, y) {
 	}
 	
 	/**
-	 * Add the given value to this Vector.
-	 * @param v Number or Vector
-	 * @return Vector
+	 * Add the given value to this Vector2d.
+	 * @param v Number or Vector2d
+	 * @return Vector2d
 	 */
 	this.add = function Add(v) {
 		if(typeof(v) == "number") {
@@ -68,9 +68,9 @@ Vector = function Vector(x, y) {
 	}
    
 	/**
-	 * Substract the given value from this Vector.
-	 * @param v Number or Vector
-	 * @return Vector
+	 * Substract the given value from this Vector2d.
+	 * @param v Number or Vector2d
+	 * @return Vector2d
 	 */
 	this.sub = function Substract(v) {
 		if(typeof(v) == "number") {
@@ -84,8 +84,8 @@ Vector = function Vector(x, y) {
 	}
    
 	/**
-	 * Calculate a vector dot product
-	 * @param v A vector
+	 * Calculate a Vector2d dot product
+	 * @param v A Vector2d
 	 * @return The dot p roduct
 	 */
 	this.dot = function DotProduct(v) {
@@ -93,9 +93,9 @@ Vector = function Vector(x, y) {
 	}
 	
 	/**
-	 * Multiply this vector by the given one.
-	 * @param v Number or Vector
-	 * @return Vector
+	 * Multiply this Vector2d by the given one.
+	 * @param v Number or Vector2d
+	 * @return Vector2d
 	 */
 	this.mult = function Multiply(v) {
 		if(typeof(v) == "number") {
@@ -109,9 +109,9 @@ Vector = function Vector(x, y) {
 	}
 	
 	/** 
-	 * Divide this vector's x/y by another's.
-	 * @param v Number or Vector
-	 * @return Vector
+	 * Divide this Vector2d's x/y by another's.
+	 * @param v Number or Vector2d
+	 * @return Vector2d
 	 */
 	this.div = function Divide(v) {
 		if(typeof(v) == "number") {
@@ -125,11 +125,10 @@ Vector = function Vector(x, y) {
 	}
    
 	/**
-	 * Normalize the vector.
+	 * Normalize the Vector2d.
 	 * http://www.fundza.com/vectors/normalize/index.html
 	 * http://programmedlessons.org/VectorLessons/vch04/vch04_4.html
-	 * @param void
-	 * @return vector
+	 * @return Vector2d
 	 */
 	this.normalize = function Normalize() {
 		var length = this.len();
@@ -141,18 +140,17 @@ Vector = function Vector(x, y) {
 	/**
 	 * Calculate the perpendicular vector (normal)
 	 * http://en.wikipedia.org/wiki/Perpendicular_vector
-	 * @param void
-	 * @return vector 
+	 * @return Vector2d 
 	 */
 	this.perp = function Perp() {
-		return new Vector(-this.y, this.x);
+		return new Vector2d(-this.y, this.x);
 	}
 	
 	/**
-	 * Create and return a copy of this Vector.
-	 * @return vector
+	 * Create and return a copy of this Vector2d.
+	 * @return Vector2d
 	 */
 	this.clone = function Clone() {
-		return new Vector(this.x, this.y);
+		return new Vector2d(this.x, this.y);
 	}
 }
