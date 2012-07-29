@@ -9,6 +9,14 @@
 Vector2d = function Vector2d(x, y) {
 	this.x = x;
 	this.y = y;
+	
+	/**
+	 * Return the slope of the vector.
+	 * @return Number
+	 */
+	this.slope = function Slope() {
+		return (this.y/this.x);
+	}
    
 	/**
 	 * Set or calculate the length of the Vector2d.
@@ -25,6 +33,39 @@ Vector2d = function Vector2d(x, y) {
 			
 		}
 		return Math.sqrt((this.x * this.x) + (this.y * this.y));
+	}
+	
+	/**
+	 * Scale the x component of the Vector while keeping the ratio with the y 
+	 * component.
+	 * @param n Number
+	 * @return Number
+	 */
+	this.lenx = function ScaleX( n ) {
+		// Calculate new y property (i.e. 
+		var newY = n * this.clone().normalize().slope();
+		console.log("normalized: ", this.clone().len());
+		// Apply changes.
+		this.x = n;
+		this.y = newY;
+		// Return.
+		return this;
+	}
+	
+	/**
+	 * Scale the x component of the Vector while keeping the ratio with the y 
+	 * component.
+	 * @param n Number
+	 * @return Number
+	 */
+	this.leny = function ScaleY( n ) {
+		// Calculate new x property (i.e. n / slope).
+		var newX = n / this.clone().normalize().slope();
+		// Apply changes.
+		this.x = newX;
+		this.y = n;
+		// Return.
+		return this;
 	}
 	
 	/**
@@ -48,7 +89,7 @@ Vector2d = function Vector2d(x, y) {
 	this.clamp = function Clamp(min, max) {
 		var l = this.len();
 		if(l<min) this.len(min);
-		if(l>max this.len(max);
+		if(l>max) this.len(max);
 	}
 	
 	/**
@@ -118,8 +159,8 @@ Vector2d = function Vector2d(x, y) {
 			this.x/=v;
 			this.y/=v;
 		} else {
-			this./=v.x;
-			this./=v.y;
+			this.x/=v.x;
+			this.y/=v.y;
 		}
 		return this;
 	}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vector2d Test Bed</title>
+	
+	<script src="vector2d.js"></script>
+	<script>
+		var v = new Vector2d(10, 10);
+		
+		// Test lenx/y methods.
+		var lx = v.clone().lenx(5).y;
+		console.log("lx: ", lx);
+		
+		var ly = v.clone().leny(5).x;
+		console.log("ly: ", ly);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
