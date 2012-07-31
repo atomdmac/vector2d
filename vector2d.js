@@ -15,6 +15,10 @@ Vector2d = function Vector2d(x, y) {
 	 * @return Number
 	 */
 	this.slope = function Slope() {
+		// Account for vertical/horizontal line.
+		if(this.x==0) return null;
+		if(this.y==0) return 0;
+		// Otherwise, calculate and return slope.
 		return (this.y/this.x);
 	}
    
@@ -42,9 +46,17 @@ Vector2d = function Vector2d(x, y) {
 	 * @return Number
 	 */
 	this.lenx = function ScaleX( n ) {
-		// Calculate new y property (i.e. 
-		var newY = n * this.clone().normalize().slope();
-		console.log("normalized: ", this.clone().len());
+		// Calculate new Y component based on current slope.
+		var slope = this.clone().normalize().slope();
+		
+		// Account for verticle/horiztonal lines.
+		var newY;
+		if(slope != null) {
+			newY = n * slope;
+		} else {
+			newY = 0;
+		}
+		
 		// Apply changes.
 		this.x = n;
 		this.y = newY;
@@ -60,7 +72,15 @@ Vector2d = function Vector2d(x, y) {
 	 */
 	this.leny = function ScaleY( n ) {
 		// Calculate new x property (i.e. n / slope).
-		var newX = n / this.clone().normalize().slope();
+		var slope = this.clone().normalize().slope();
+		
+		// Account for horizontal lines.
+		var newX;
+		if(slope != 0) {
+			newX = n / slope;
+		} else {
+			newX = 0;
+		}
 		// Apply changes.
 		this.x = newX;
 		this.y = n;
